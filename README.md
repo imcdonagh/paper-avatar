@@ -78,5 +78,5 @@ More information at [jdenticon.com](https://www.jdenticon.com/)
 ## Install
 
 ```
-bower install --save Abe90/paper-avatar
+bower install --save imcdonagh/paper-avatar
 ```
