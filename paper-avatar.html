@@ -21,10 +21,24 @@ To change the size of the avatar:
       --paper-avatar-width: 60px;
     }
 
+To adjust the sizing of the avatar within the container, such as crop or stretch:
+
+    paper-avatar {
+      --paper-avatar-adjust-size: cover | contain | <length> | <percentage>
+    }
+
+To adjust the position of the avatar within the container:
+
+    paper-avatar {
+      --paper-avatar-adjust-position: top | left | bottom | right | center | <length> | <percentage>
+    }
+
 Custom property | Description | Default
 ----------------|-------------|----------
 `--paper-avatar-width` | Size (width and height) of the avatar image | `40px`
 `--paper-avatar-color` | Background color of the avatar image | 
+`--paper-avatar-adjust-size` | Adjust size of avatar image according to CSS `background-size` property  | `contain`
+`--paper-avatar-adjust-position` | Adjust position of avatar image according to CSS `background-position` property | `initial`
 
 
 @demo demo/index.html 
@@ -56,7 +70,7 @@ Custom property | Description | Default
 				pointer-events: none;
 			}
 			
-			#label, #img, #jdenticon {
+			#label, #img, #jdenticon, #img2 {
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -100,6 +114,16 @@ Custom property | Description | Default
 			*[hidden] {
 				display: none !important;
 			}
+            
+            #img {
+                display: none;
+            }
+            
+            #img2 {
+                background-repeat: no-repeat;
+                background-size: var(--paper-avatar-adjust-size, cover);
+                background-position: var(--paper-avatar-adjust-position, initial);
+            }
 		</style>
 
 		<div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
@@ -107,7 +131,8 @@ Custom property | Description | Default
 		<svg id="jdenticon" width="40" height="40"><slot></slot></svg>
 
 		<template is="dom-if" if="[[src]]">
-			<img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
+            <img id="img" src="[[src]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
+            <div id="img2" style="background-image: url([[src]]);" title="[[label]]"></div>
 		</template>
 	</template>
 
