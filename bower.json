@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "User avatar in material style",
   "authors": [
-    "Abe90"
+    "Abe90", "imcdonagh"
   ],
   "main": "paper-avatar.html",
   "license": "Apache-2.0",
